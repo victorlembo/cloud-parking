@@ -1,5 +1,6 @@
 package one.digitalinnovation.parking.service;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -18,8 +19,11 @@ public class ParkingService {
 
 	static {
 		String id = getUUID();
+		String id1 = getUUID();
 		Parking parking = new Parking(id, "DMS-1111", "SC", "CELTA", "PRETO");
+		Parking parking1 = new Parking(id1, "CMS-1111", "SP", "GOL", "VERMELHO");
 		parkingMap.put(id, parking);
+		parkingMap.put(id1, parking1);
 
 	}
 
@@ -30,6 +34,23 @@ public class ParkingService {
 	private static String getUUID() {
 
 		return UUID.randomUUID().toString().replace("-", "");
+
+	}
+
+	public Parking findById(String id) {
+		// TODO Auto-generated method stub
+		return parkingMap.get(id);
+	}
+
+	public Parking create(Parking parkingCreate) {
+
+		String uuid = getUUID();
+
+		parkingCreate.setId(uuid);
+		parkingCreate.setEntryDate(LocalDateTime.now());
+		parkingMap.put(uuid, parkingCreate);
+		
+		return parkingCreate;
 
 	}
 }
