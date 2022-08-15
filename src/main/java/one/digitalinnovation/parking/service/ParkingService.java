@@ -15,7 +15,8 @@ import one.digitalinnovation.parking.repository.ParkingRepository;
 public class ParkingService {
 
     private final ParkingRepository parkingRepository;
-
+    
+    
     public ParkingService(ParkingRepository parkingRepository) {
         this.parkingRepository = parkingRepository;
     }
